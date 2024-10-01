@@ -12,28 +12,61 @@ export class MyCard extends LitElement {
     return 'my-card';
   }
 
+  static get properties(){
+    return{
+      title: { type: String },
+      image: { type: String },
+      description: { type: String },
+      buttonTitle: { type: String, attribute: "button-title" },
+      fancy: { type: Boolean, reflect: true } 
+    };
+  }
   constructor() {
     super();
     this.title = "My Customizable Card";
+    this.image = "";
+    this.description = "";
+    this.buttonTitle = "";
+    this.fancy = false;
   }
 
   static get styles() {
     return css`
       :host {
         display: block;
+        
       }
-      .MusicCard {
-  width: 600px;
+
+      :host([fancy]){
+        background-color: var(--my-card-fancy-bg, blue);
+        border: 2px solid skyblue;
+      }
+
+  .MerchCard, .MusicCard, .TourDates, .TopHits, .WikiPage {
+  width:40%;
   padding: 8px;
   background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 15px; 
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+  overflow: hidden;
 }
 
-.image{
-  width: 550px;
+.image, .MerchPic, .TourPic{
+  width: 100%;
+  height:auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 10px;
 }
+
 
 .Name{
   text-align: center;  
@@ -47,8 +80,20 @@ export class MyCard extends LitElement {
 }
 
 .haxLink{
-    font-size: 17px;
+  display: inline-block;
+  background-color: #b78bda; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: block;
+  width: 120px;
+  text-align: center;
 }
+
 h1{
   font-size: 17px;
 }
@@ -56,6 +101,7 @@ h2{
   margin: 8px 0;
   font-size: 20px;
 }
+
     `;
   }
 
@@ -88,7 +134,15 @@ this.shadowRoot.querySelector('#delete-card').addEventListener('click', () => {
 firstUpdated(){
   this.cardListener();
 }
-
+openChanged(e) {
+  console.log(e.newState);
+  if (e.newState === "open") {
+    this.fancy = true;
+  }
+  else {
+    this.fancy = false;
+  }
+}
   render() {
     return html`<h1>Customizable Card</h1>
     <h2>Settings</h2>
@@ -107,15 +161,44 @@ firstUpdated(){
        </p>
          <a href="https://hax.psu.edu" class="haxLink">Learn More Here!</a>
       </div>
+
+      <div class="MerchCard">
+      <img src="https://theweeknd.b-cdn.net/wp-content/uploads/2022/12/AHTD-TOUR-MERCH-PRODUCT-SHOTS-PORTAL-LS-BLACK-BACK.png" class = "MerchPic">
+      <h2 class="Name">Merch</h2>
+    <p class = "MerchDetails"> All Sizes Are Linked Below! 
+       </p>
+         <a href="https://hax.psu.edu" class="haxLink">Buy Now!</a>
+
+         </div>
+
+      <div class="TourDates">
+      <img src="https://media.pitchfork.com/photos/6220d915d78e88f43d09ebf3/master/w_1280%2Cc_limit/The-Weeknd-Tour.jpg" class = "TourPic">
+      <h2 class="Name">Tour Dates</h2>
+    <p class = "TourDetails"> Buy A Ticket Below
+       </p>
+         <a href="https://hax.psu.edu" class="haxLink">See Dates!</a>
+      </div>
+
+      <div class="TopHits">
+      <img src="https://i.ytimg.com/vi/v0SR6AqBUck/maxresdefault.jpg" class = "TourPic">
+      <h2 class="Name">Top Hits</h2>
+    <p class = "HitDetails"> Listen To His Top Hits!
+       </p>
+         <a href="https://hax.psu.edu" class="haxLink">Listen Here!</a>
+      </div>
+
+      <div class="WikiPage">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/The_Weeknd_with_hand_in_the_air_performing_live_in_Hong_Kong_in_November_2018_%28cropped%29.jpg/201px-The_Weeknd_with_hand_in_the_air_performing_live_in_Hong_Kong_in_November_2018_%28cropped%29.jpg" class = "TourPic">
+      <h2 class="Name">Wiki Page</h2>
+    <p class = "TourDetails"> Learn More About The Weeknd Here!
+       </p>
+         <a href="https://hax.psu.edu" class="haxLink">Details Here!</a>
+      </div>
+
     </div>
     </div>`;
   }
 
-  static get properties() {
-    return {
-      title: { type: String },
-    };
-  }
 }
 
 globalThis.customElements.define(MyCard.tag, MyCard);

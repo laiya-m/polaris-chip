@@ -52,7 +52,7 @@ export class PolarisChip extends LitElement {
       }
 
       :host([shiny]) a {
-        background-color: blue;
+        background-color: yellow;
       }
 
       a {

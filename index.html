@@ -16,6 +16,10 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+
+  my-card[fancy]{
+    --my-card-fancy-bg: #5f73cb;
+  }
     polaris-chip {
       margin: 16px;
     }
@@ -27,12 +31,60 @@
   <h1>polaris-chip</h1>
   <!-- this is going to do whatever the tag's defaults are -->
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
-  <polaris-chip title="Faculty and Staff"></polaris-chip>
+  <polaris-chip title="Faculty and Staff" link></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
 
   <h1>my-card</h1>
-  <my-card></my-card>
+  <my-card title="Minnesota Wild" fancy>
+    <p slot="content">
+      A professional hockey team, yet they have terrible colors. I wish I had a
+      <strong>AWESOME</strong> neon yellow / lime jersey like their retro-reverse jerseys.
+    </p>
+    <a slot="link" href="https://www.nhl.com/wild" class="haxLink">Visit Team Page</a>
+  </my-card>
+  
+  <my-card 
+    title="The Weeknd" fancy>
+    <p slot="content">
+      The Weeknd, born Abel Tesfaye, is a Canadian artist known for his smooth mix of R&B, pop, and electronic sounds. He first caught attention in 2011 with his mixtapes and later blew up with hits like "Can't Feel My Face," "Blinding Lights," and "Starboy." His music dives into themes like love, heartbreak, and life’s ups and downs, all delivered with his signature high-pitched voice. Over the years, The Weeknd has become one of the biggest names in music, constantly evolving his sound and style.
+    <a slot="link" href="https://en.wikipedia.org/wiki/The_Weeknd" class="haxLink">Learn More Here!</a>
+    ></my-card>
+  
+    <my-card 
+    title="Merch">
+    <p slot="content">
+      All Sizes Are Linked Below!
+    </p>
+    <a slot="link" href="https://theweeknd.com/shop" class="haxLink">Buy Now!</a>
+  ></my-card>
+  
+  <my-card 
+    title="Tour Dates"></my-card>
+    <p slot ="content">
+      Buy a Ticket Below!
+    </p>
+    <a slot="link" href="https://theweeknd.com/tour" class="haxLink">See Dates!</a>
+  ></my-card>
+
+
+  <my-card 
+    title="Top Hits">
+    <p slot ="content">
+      Listen To His Top Hits!
+    </p>
+    <a slot="link" href="https://theweeknd.com/music" class="haxLink">Listen Here!</a>
+  ></my-card>
+
+
+  <my-card 
+    title="Wiki Page">
+    <p slot="content">
+      Learn More About The Weeknd Here!
+    </p>
+    <a slot="link" href="https://en.wikipedia.org/wiki/The_Weeknd" class="haxLink">Details Here!</a>
+  ></my-card>
+
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
